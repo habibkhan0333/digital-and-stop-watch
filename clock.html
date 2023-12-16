@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>clock</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .clock{
+            background-color: rgb(76, 60, 78);
+            color: rgb(244, 3, 3);
+            width: 350px;
+            height : 300px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid rgb(164, 44, 44);
+            border-radius: 100%;
+            font-size: 30px;
+            font-size: 35px;
+        }
+        .body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(39, 31, 31) ;
+        }
+
+        .gaps{
+            width: 30px;
+            height: 20px;
+        }
+        .div-btn{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 40px;
+        }
+       
+        .btn{
+          background-color: rgb(253, 252, 252);
+            color: rgb(127, 119, 119);
+            width: 100px;
+            height: 50px;
+            border: 3px solid  red;
+            border-radius: 60%;
+            font-size: 30px;
+            
+            justify-content: center;
+            align-items: center;
+           
+        }
+    </style>
+</head>
+<body class="body">
+  <div>
+    <div class="clock">
+     
+      <p id="hours"  class="gaps"></p>
+      <p id="minutes" class="gaps"></p>
+      <p id="seconds" class="gaps"></p>
+      <p id="milliSeconds" class="gaps"></p> 
+      <p id="PmAm" class="gaps"></p> 
+      <p id="day"></p>   
+      <p id="month"></p>
+      <p id="year"></p>
+    </div>
+    <div class="div-btn" >
+      <button id="button2" onclick="run1() " class="btn">Run</button>
+      <button id=" button1" onclick="stop()" class="btn"> Stop</button> 
+    </div>
+   </div>
+    <script>
+      
+      function run(){
+        let cInterval;
+        let date = new Date();
+        console.log(date);
+    let hoursTime = date.getHours();
+    if ( hoursTime>12){
+                hoursTime= hoursTime-12 ;     
+            }
+    if (hoursTime <10){
+                hoursTime= "0"+hoursTime;
+            } 
+            
+    let minutesTime = date.getMinutes();
+    if (minutesTime<10){
+               minutesTime ="0"+ minutesTime ;
+            }
+    let secondsTime = date.getSeconds(); 
+    if  (secondsTime<10){
+               secondsTime ="0"+ secondsTime ;
+            }
+    let milliSecondsTime = date.getMilliseconds();
+    let pmAm ;
+    if (hoursTime <12 ){
+        pmAm = "PM";
+    }
+    else if (hoursTime >12){
+        pmAm ="AM";
+    }
+    
+       
+        let hours = document.getElementById("hours").innerHTML=hoursTime;
+        if ( hoursTime<10){
+           hoursTime = "0" +hoursTime  ;
+        }
+        document.getElementById("minutes").innerHTML=minutesTime;
+        document.getElementById("seconds").innerHTML=secondsTime;
+        document.getElementById("milliSeconds").innerHTML=milliSecondsTime; 
+        document.getElementById("PmAm").innerHTML= pmAm;
+               
+       }
+       
+       function date(){
+        
+        // to filter the date 
+        let date1= new Date();     
+        let day = date1.getDate();
+        let month = date1.getMonth();
+        let year = date1.getFullYear();
+        
+
+        //  targetting 
+        document.getElementById("day").innerHTML=day;
+        document.getElementById("month").innerHTML=month;
+        document.getElementById("year").innerHTML=year;
+       }
+ 
+ function stop(){ 
+  clearInterval(cInterval);
+}
+ function run1(){
+  cInterval= setInterval(run, 1);
+}
+
+
+
+
+
+
+
+</script>
+Asynchronus
+her function ko time diya jaye jo function zyada time le rha hai us se pehly baki function ko run krlo
+setInterval()
+clearInterval()
+setTimeout()
+clearTimeout()
+
+
+
+
+Syncrhonus
+her function / code terteeb se chalen
+
+
+
+ap jab code likty ho javascript.
+function3() 4000
+function1() 1000
+function2() 2000
+</body>
+
+</html>
+  
